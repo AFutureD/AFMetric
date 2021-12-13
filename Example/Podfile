@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'AFMetric_Example' do
+  pod 'AFMetric', :path => '../'
+
+  target 'AFMetric_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
