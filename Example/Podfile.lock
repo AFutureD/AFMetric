@@ -1,0 +1,28 @@
+PODS:
+  - AFMetric (0.1.0):
+    - YYModel
+  - Masonry (1.1.0)
+  - YYModel (1.0.4)
+
+DEPENDENCIES:
+  - AFMetric (from `../`)
+  - Masonry (= 1.1.0)
+  - YYModel (= 1.0.4)
+
+SPEC REPOS:
+  trunk:
+    - Masonry
+    - YYModel
+
+EXTERNAL SOURCES:
+  AFMetric:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AFMetric: c67aeebe3c138bf94f928d3e9dca22dc5ed4adf5
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+
+PODFILE CHECKSUM: 1366a6652870fd2bf0e103de66f44870ba5d2d76
+
+COCOAPODS: 1.11.2

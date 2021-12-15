@@ -38,5 +38,26 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'YYModel'
+
+  s.define_singleton_method :support_xcode12_config do
+    pod_xcconfig = attributes_hash.fetch('pod_target_xcconfig', {})
+
+    all_archs = %w[arm64 armv7 x86_64 i386]
+    exclude_archs = all_archs - pod_xcconfig.fetch('VALID_ARCHS', all_archs.join(' ')).split(' ')
+
+    pod_xcconfig['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+    pod_xcconfig['EXCLUDED_ARCHS[sdk=watchsimulator*]'] = 'x86_64 arm64'
+    unless exclude_archs.empty?
+     pod_xcconfig['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] += ' ' + exclude_archs.join(' ')
+    end
+
+    pod_xcconfig.delete('VALID_ARCHS')
+    attributes_hash['pod_target_xcconfig'] = pod_xcconfig
+
+    user_xcconfig = attributes_hash.fetch('user_target_xcconfig', {})
+    user_xcconfig['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+    user_xcconfig['EXCLUDED_ARCHS[sdk=watchsimulator*]'] = 'x86_64 arm64'
+    attributes_hash['user_target_xcconfig'] = user_xcconfig
+  end
 end

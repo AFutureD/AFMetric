@@ -1,13 +1,30 @@
 use_frameworks!
 
-platform :ios, '9.0'
+platform :ios, '12.0'
 
 target 'AFMetric_Example' do
   pod 'AFMetric', :path => '../'
 
+  pod 'Masonry', '1.1.0'
+  pod 'YYModel', '1.0.4'
+
   target 'AFMetric_Tests' do
     inherit! :search_paths
 
-    
+  end
+
+end
+
+target 'Benchmark' do
+  pod 'AFMetric', :path => '../'
+
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+    end
   end
 end
