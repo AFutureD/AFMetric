@@ -48,7 +48,7 @@ static int count = 100000;
 + (void)benchmarkRegister {
     NSLog(@"==================== BENCHMARK REGISTER =================");
     
-    AFMetricManger * manager = [AFMetricManger sharedInstance];
+    AFMetricManager * manager = [AFMetricManager sharedInstance];
     NSTimeInterval begin, end, time;
 
     begin = CACurrentMediaTime();
@@ -81,7 +81,7 @@ static int count = 100000;
 
 + (void)benchmarkHook {
     NSLog(@"==================== BENCHMARK HOOK =====================");
-    AFMetricManger * manager = [AFMetricManger sharedInstance];
+    AFMetricManager * manager = [AFMetricManager sharedInstance];
     NSTimeInterval begin, end, time, baseTime;
     
     begin = CACurrentMediaTime();
@@ -126,7 +126,7 @@ static int count = 100000;
 + (void)benchmarkTrimContainer {
     NSLog(@"=============== BENCHMARK TRIM CONTAINER ================");
     
-    AFMetricManger * manager = [AFMetricManger sharedInstance];
+    AFMetricManager * manager = [AFMetricManager sharedInstance];
     NSTimeInterval begin, end, time;
     
     @autoreleasepool {

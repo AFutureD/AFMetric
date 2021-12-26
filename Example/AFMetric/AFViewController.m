@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [AFLogUtil sharedInstance].debugMode = YES;
+    // [AFLogUtil sharedInstance].debugMode = YES;
     
     [self.view addSubview: self.table];
     [self.view addSubview:self.randomDelBtn];
@@ -58,8 +58,8 @@
         make.bottom.equalTo(self.randomDelBtn.mas_top);
     }];
     
-    [AFMetricManger sharedInstance].autoTrimInterval = 5;
-    [[AFMetricManger sharedInstance] hookTarget:self withTrackerName:@"AFBizTracker" broadcastEvent:S4S(btnAction)];
+    [AFMetricManager sharedInstance].autoTrimInterval = 5;
+    [[AFMetricManager sharedInstance] hookTarget:self withTrackerName:@"AFBizTracker" broadcastEvent:S4S(btnAction)];
 }
 
 

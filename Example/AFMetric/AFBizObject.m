@@ -15,10 +15,10 @@
     if (self = [super init]) {
         _name = name;
         
-        [[AFMetricManger sharedInstance] hookTarget:self withTrackerName:@"AFBizTracker" method:S4S(bizMethod)];
-        [[AFMetricManger sharedInstance] hookTarget:self withTrackerName:@"AFBizTracker" method:S4S(bizMethodWithParam:)];
-        [[AFMetricManger sharedInstance] hookTarget:self withTrackerName:@"AFBizTracker" method:S4S(bizMethodWithParam:anotherParam:)];
-        [[AFMetricManger sharedInstance] provideTracker:@"AFBizTracker" withTarget:self values:@{
+        [[AFMetricManager sharedInstance] hookTarget:self withTrackerName:@"AFBizTracker" method:S4S(bizMethod)];
+        [[AFMetricManager sharedInstance] hookTarget:self withTrackerName:@"AFBizTracker" method:S4S(bizMethodWithParam:)];
+        [[AFMetricManager sharedInstance] hookTarget:self withTrackerName:@"AFBizTracker" method:S4S(bizMethodWithParam:anotherParam:)];
+        [[AFMetricManager sharedInstance] provideTracker:@"AFBizTracker" withTarget:self values:@{
             @"name": self.name
         }];
     }

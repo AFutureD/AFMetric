@@ -1,27 +1,16 @@
 //
-//  AFMetricManger.h
-//  TYSmartSceneDefaultUISkin
+//  AFMetricManager+Hook.h
+//  AFMetricManager+Hook
 //
-//  Created by AFuture on 2021/11/3.
+//  Created by AFuture D. on 2021/12/25.
 //
 
 #import <Foundation/Foundation.h>
-#import "AFMetricContainer.h"
+#import "AFMetricManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AFMetricManger : NSObject
-
-@property NSTimeInterval autoTrimInterval;
-
-+ (instancetype)sharedInstance;
-
-- (AFMetricContainer *)containerOfTrackerName:(NSString *)trackerName;
-- (AFMetricContainer *)containerOfClass:(Class)cls;
-- (NSInteger)trimContainer;
-
-- (void)registTracker:(nonnull Class)trackerClass;
-- (id)trackerOfTarget:(id)target byTrackerName:(NSString *)trackerName;
+@interface AFMetricManager (Methods)
 
 - (void)hookTarget:(id)target withTrackerName:(NSString *)trackerName methods:(NSArray<NSString *> *)methods;
 - (void)hookTarget:(id)target withTrackerName:(NSString *)trackerName method:(NSString *)method;
@@ -32,9 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)hookTarget:(id)target withTrackerName:(NSString *)trackerName broadcastEvent:(NSString *)event;
 - (void)hookTarget:(id)target withTrackerName:(NSString *)trackerName broadcastEvents:(NSArray<NSString *> *)events;
 
-- (void)provideTracker:(NSString *_Nonnull)trackerName withTarget:(id)target values:(NSDictionary * _Nullable)trackValues;
-
-- (void)triggerEvent:(NSString *)id withValues:(NSDictionary *)values;
 @end
 
 NS_ASSUME_NONNULL_END
