@@ -14,6 +14,8 @@
 
 @implementation AFMetricManager (Methods)
 
+#pragma mark - point 2 point
+
 - (void)hookTarget:(id)target withTrackerName:(NSString *)trackerName methods:(NSArray<NSString *> *)methods {
     [methods enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [self hookTarget:target withTrackerName:trackerName method:obj];
@@ -63,6 +65,8 @@
     [[AFMetricTrigger alloc] initTriggerForTarget:target hookSelector:sel withOptions:AOPOptionsAfter withActions:action error:NULL];
 
 }
+
+#pragma mark - broadcast: one 2 N
 
 - (void)hookTarget:(id)target withTrackerName:(NSString *)trackerName broadcastEvents:(NSArray<NSString *> *)events {
     [events enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL * stop) {

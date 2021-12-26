@@ -59,7 +59,7 @@
     }];
     
     [AFMetricManager sharedInstance].autoTrimInterval = 5;
-    [[AFMetricManager sharedInstance] hookTarget:self withTrackerName:@"AFBizTracker" broadcastEvent:S4S(btnAction)];
+    [[AFMetricManager sharedInstance] hookTarget:self withTrackerName:@"AFBizTracker" broadcastEvent:S4S(removeAction)];
 }
 
 
@@ -76,7 +76,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    AFLogInfo(@"table didSelectRowAtIndexPath: %ld",(long)indexPath.item);
+    NSLog(@"table didSelectRowAtIndexPath: %ld",(long)indexPath.item);
     AFBizObject * tmp = [self.objs objectAtIndex:indexPath.item];
     [tmp bizMethod];
     [tmp bizMethodWithParam:[NSString stringWithFormat:@"%ld",(long)indexPath.item]];
@@ -87,7 +87,7 @@
 
 #pragma mark - action
 
-- (void)btnAction {
+- (void)removeAction {
     if (!self.objs.count) {
         return;
     }
@@ -95,11 +95,12 @@
     AFBizObject * tmp = [self.objs objectAtIndex:r];
     [self.objs removeObject:tmp];
     [self.table reloadData];
-    AFLogInfo(@"Random remove: %@", tmp.name);
+    NSLog(@"Random remove: %@", tmp.name);
 }
 
 - (void)genAction {
     self.objs = [self prepareData:17];
+    // TODO: single bind
     [self.table reloadData];
 }
 

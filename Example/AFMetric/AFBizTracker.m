@@ -1,9 +1,9 @@
 //
 //  AFBizTracker.m
-//  TYAutoTracker_Example
+//  AFAutoTracker_Example
 //
 //  Created by 尼诺 on 2021/12/9.
-//  Copyright © 2021 chenwq. All rights reserved.
+//  Copyright © 2021 尼诺. All rights reserved.
 //
 
 #import "AFBizTracker.h"
